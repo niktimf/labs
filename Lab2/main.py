@@ -1,62 +1,92 @@
 # Задание 1
 
+# Запрашиваем у пользователя день рождения и преобразуем введенное значение в целое число
 day = int(input("Введите день рождения: "))
+# Запрашиваем у пользователя месяц рождения и приводим строку к нижнему регистру для унификации
 month = input("Введите месяц рождения: ").lower()
 
 
-def zodiac_sign(day, month):
-    if (month == "март" and day >= 21) or (month == "апрель" and day <= 19):
+def zodiac_sign(day: int, month: str) -> str:
+    """
+    Функция, которая возвращает знак зодиака в зависимости от месяца и дня
+    :param day: день рождения
+    :param month: месяц рождения
+    :return: знак зодиака
+    """
+    # Проверяем соответствие даты каждому знаку зодиака и возвращаем его название
+    # Каждая проверка соответствует определенному диапазону дат для каждого знака
+    if (month == "март" and day >= 21) | (month == "апрель" and day <= 19):
         return "Овен"
-    elif (month == "апрель" and day >= 20) or (month == "май" and day <= 20):
+    elif (month == "апрель" and day >= 20) | (month == "май" and day <= 20):
         return "Телец"
-    elif (month == "май" and day >= 21) or (month == "июнь" and day <= 21):
+    elif (month == "май" and day >= 21) | (month == "июнь" and day <= 21):
         return "Близнецы"
-    elif (month == "июнь" and day >= 22) or (month == "июль" and day <= 22):
+    elif (month == "июнь" and day >= 22) | (month == "июль" and day <= 22):
         return "Рак"
-    elif (month == "июль" and day >= 23) or (month == "август" and day <= 22):
+    elif (month == "июль" and day >= 23) | (month == "август" and day <= 22):
         return "Лев"
-    elif (month == "август" and day >= 23) or (month == "сентябрь" and day <= 22):
+    elif (month == "август" and day >= 23) | (month == "сентябрь" and day <= 22):
         return "Дева"
-    elif (month == "сентябрь" and day >= 23) or (month == "октябрь" and day <= 23):
+    elif (month == "сентябрь" and day >= 23) | (month == "октябрь" and day <= 23):
         return "Весы"
-    elif (month == "октябрь" and day >= 24) or (month == "ноябрь" and day <= 22):
+    elif (month == "октябрь" and day >= 24) | (month == "ноябрь" and day <= 22):
         return "Скорпион"
-    elif (month == "ноябрь" and day >= 23) or (month == "декабрь" and day <= 21):
+    elif (month == "ноябрь" and day >= 23) | (month == "декабрь" and day <= 21):
         return "Стрелец"
-    elif (month == "декабрь" and day >= 22) or (month == "январь" and day <= 20):
+    elif (month == "декабрь" and day >= 22) | (month == "январь" and day <= 20):
         return "Козерог"
-    elif (month == "январь" and day >= 21) or (month == "февраль" and day <= 19):
+    elif (month == "январь" and day >= 21) | (month == "февраль" and day <= 19):
         return "Водолей"
-    elif (month == "февраль" and day >= 20) or (month == "март" and day <= 20):
+    elif (month == "февраль" and day >= 20) | (month == "март" and day <= 20):
         return "Рыбы"
     else:
         return "Неизвестный знак зодиака"
 
 
+# Выводим результат работы функции, используя введенные пользователем данные
 print(f"Ваш знак зодиака: {zodiac_sign(day, month)}")
 
 
 # Задание 2
-def is_symmetric(number):
+def is_symmetric(number: int) -> bool:
+    """
+    # Функция, которая проверяет является ли число симметричным
+    :param number: число
+    :return: true, если число симметричное, иначе false
+    """
     str_number = str(number).zfill(4)
     return str_number == str_number[::-1]
 
 
-number = input("Введите четырехзначное число: ")
+# Запрашиваем у пользователя четырехзначное число в виде строки и преобразуем его в int
+number = int(input("Введите четырехзначное число: "))
+# Выводим результат работы функции
 print(True if is_symmetric(number) else False)
 
 
 # Задание 3
-def is_leap_year(year):
-    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+def is_leap_year(year: int) -> bool:
+    """
+    Функция, которая проверяет является ли год високосным
+    :param year: год
+    :return: true, если год високосный, иначе false
+    """
+    return (year % 4 == 0 and year % 100 != 0) | (year % 400 == 0)
 
 
+# Запрашиваем у пользователя год и преобразуем его в целое число
 year = int(input("Введите год: "))
+# Выводим результат работы функции
 print("YES" if is_leap_year(year) else "NO")
 
 
 # Задание 4
-def correct_form(n):
+def correct_form(n: int) -> str:
+    """
+    Функция, которая определяет склонение слова "корова"
+    :param n: число
+    :return: склонение слова "корова"
+    """
     if 10 < n % 100 < 15:
         return "коров"
     elif n % 10 == 1:
@@ -67,28 +97,49 @@ def correct_form(n):
         return "коров"
 
 
+# Запрашиваем у пользователя число коров и преобразуем его в целое число
 n = int(input("Введите число коров: "))
+# Выводим результат работы функции
 print(f"На лугу пасется {n} {correct_form(n)}")
 
 
 # Задание 5
 
-def min_divisor_for(n):
+def min_divisor_for(n: int) -> int:
+    """
+    Функция, которая определяет наименьший делитель числа
+    :param n: число
+    :return: наименьший делитель числа
+    """
+    # Цикл от 2 до n включительно для поиска минимального делителя
     for i in range(2, n + 1):
+        # Если делитель найден, возвращаем его
         if n % i == 0:
             return i
 
 
+# Запрашиваем у пользователя число и преобразуем его в целое число
 n = int(input("Введите число: "))
+# Выводим результат работы функции
 print(min_divisor_for(n))
 
 
-def min_divisor_while(n):
+def min_divisor_while(n: int) -> int:
+    """
+    Функция, которая определяет наименьший делитель числа
+    :param n: число
+    :return: наименьший делитель числа
+    """
+    # Начальное значение делителя
     i = 2
+    # Пока n не делится на i без остатка, увеличиваем i
     while n % i != 0:
         i += 1
+    # Возвращаем i как минимальный делитель числа
     return i
 
 
+# Запрашиваем у пользователя число и преобразуем его в целое число
 n = int(input("Введите число: "))
+# Выводим результат работы функции
 print(min_divisor_while(n))
